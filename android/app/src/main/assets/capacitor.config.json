@@ -1,0 +1,6 @@
+{
+	"appId": "com.jcedenio.geolocationSQLite",
+	"appName": "geolocationSQLite",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,20 +1,65 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar mode="ios" color="warning">
     <ion-title>
-      Blank
+      Mapa
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div #mapa id="map"></div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-chip class="ubicacion" (click)="miUbicaion()">
+    <ion-label class="letra">Mi Ubicacion</ion-label>
+    <ion-icon class="letra" name="locate"></ion-icon>
+  </ion-chip>
+
+  <ion-chip class="mostrar" (click)="mostrarMarcadores()">
+    <ion-label class="letra">Mostrar Marcadores</ion-label>
+    <ion-icon class="letra" name="eye"></ion-icon>
+  </ion-chip>
+
+  <ion-chip class="guardar" (click)="save()">
+    <ion-label class="letra">Guardar</ion-label>
+    <ion-icon class="letra" name="save"></ion-icon>
+  </ion-chip>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="centro">Coordenadas desde SQlite</ion-card-title>
+    </ion-card-header>
+    <!-- latitud,longitud -->
+
+    <ion-card-content>
+      <ion-item>
+        <ion-col>ID</ion-col>
+        <ion-col>LATITUD</ion-col>
+        <ion-col>LONGITUD</ion-col>
+      </ion-item>
+      
+      <ion-item-sliding *ngFor="let item of listado2" #ionItemSliding>
+        <ion-item>
+          <ion-col>{{item.id}}</ion-col>
+          <ion-col>{{item.latitud}}</ion-col>
+          <ion-col>{{item.longitud}}</ion-col>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="light" (click)="Eliminar(item.id,ionItemSliding)">
+            <ion-icon color="danger" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+<ion-footer mode="ios">
+  <!-- PIE DE PAGINA -->
+  <ion-toolbar color="warning">
+    <div>
+      <ion-title>Realizado por Cedeño Richards</ion-title><br><br>
+      <ion-label id="label">UPSE-2021</ion-label>
+    </div>
+  </ion-toolbar>
+</ion-footer>
